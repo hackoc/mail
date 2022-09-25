@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
 import fetch from 'node-fetch';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ async function send (data, { template, subject, text }) {
 
 const app = express();
 app.use(express.json({ extended: true }));
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Hack OC Mailroom! Hack OC Mailroom powers all of our email services, like our mailing list, registrations, vaccine verification, and test verification. I\'m also open source! Check out https://github.com/hackoc/mail.');
