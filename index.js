@@ -127,6 +127,10 @@ app.get('/v1/unauthed/subscribe/webhook', async (req, res) => {
     res.send(`${emailsSent} email(s) sent out.`);
 });
 
+app.get('/v1/webhook', (req, res) => {
+    res.redirect(`http://192.155.81.173/v1/unauthed/subscribe/webhook`);
+});
+
 app.listen(process.env.PORT ?? 8081, () => {
     console.log(`Listening on *:${process.env.PORT ?? 8081}`);
 });
