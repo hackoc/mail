@@ -54,7 +54,7 @@ const app = express();
 app.use(express.json({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the Hack OC Mailroom! Hack OC Mailroom powers all of our email services, like our mailing list, registrations, vaccine verification, and test verification. I\'m also open source! Check out https://github.com/hackoc/mailroom.');
+    res.send('Welcome to the Hack OC Mailroom! Hack OC Mailroom powers all of our email services, like our mailing list, registrations, vaccine verification, and test verification. I\'m also open source! Check out https://github.com/hackoc/mail.');
 });
 
 app.use('/v1/authed', (req, res, next) => {
