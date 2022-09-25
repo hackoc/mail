@@ -93,12 +93,15 @@ app.get('/v1/unauthed/subscribe/webhook', async (req, res) => {
     });
     const { records } = await response.json();
     let emailsSent = 0;
+    console.log(recors.length);
     for (const record of records.filter(record => !record?.fields?.Notification)) {
         const email = record?.fields?.Email;
         const id = record?.id;
         try {
+            console.log('about to send');
             await send({ email }, config.messages.subscribe);
             emailsSent += 1;
+            console.log('sent');
             const output = await fetch('https://api.airtable.com/v0/appYlvRWZObGXXGOh/Emails', {
                 method: 'PATCH',
                 headers: {
