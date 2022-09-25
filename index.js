@@ -93,7 +93,7 @@ app.get('/v1/unauthed/subscribe/webhook', async (req, res) => {
     });
     const { records } = await response.json();
     let emailsSent = 0;
-    console.log(recors.length);
+    console.log(records.length);
     for (const record of records.filter(record => !record?.fields?.Notification)) {
         const email = record?.fields?.Email;
         const id = record?.id;
