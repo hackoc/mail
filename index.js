@@ -97,27 +97,29 @@ app.get('/v1/unauthed/subscribe/webhook', async (req, res) => {
         const email = record?.fields?.Email;
         const id = record?.id;
         try {
-        await send({ email }, config.messages.subscribe);
-        emailsSent += 1;
-        const output = await fetch('https://api.airtable.com/v0/appYlvRWZObGXXGOh/Emails', {
-            method: 'PATCH',
-            headers: {
-                Authorization: 'Bearer ' + process.env.AIRTABLE_KEY,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                records: [
-                    {
-                        id,
-                        fields: {
-                            Notification: true
+            await send({ email }, config.messages.subscribe);
+            emailsSent += 1;
+            const output = await fetch('https://api.airtable.com/v0/appYlvRWZObGXXGOh/Emails', {
+                method: 'PATCH',
+                headers: {
+                    Authorization: 'Bearer ' + process.env.AIRTABLE_KEY,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    records: [
+                        {
+                            id,
+                            fields: {
+                                Notification: true
+                            }
                         }
-                    }
-                ]
-            })
-        });
-        await output.json();
-        } catch (err) {}
+                    ]
+                })
+            });
+            await output.json();
+        } catch (err) {
+            console.error(err);
+        }
     }
     res.send(`${emailsSent} email(s) sent out.`);
 });
