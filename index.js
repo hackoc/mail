@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
 
 app.use('/v1/authed', (req, res, next) => {
     const auth = req.header('Authorization');
-    const valid = auth.startsWith('Bearer hoc-m-') && ('HOC-M-' + crypto.createHash('sha512').update(auth.substring(13)).digest('hex')).toUpperCase() == process.env.API_KEY_HASH;
+    const valid = auth?.startsWith('Bearer hoc-m-') && ('HOC-M-' + crypto.createHash('sha512').update(auth.substring(13)).digest('hex')).toUpperCase() == process.env.API_KEY_HASH;
     if (!valid) return res.status(401).send('Unauthorized');
     next();
 });
