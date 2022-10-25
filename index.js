@@ -41,7 +41,7 @@ const transporter = nodemailer.createTransport({
 
 async function send (data, { template, subject, text }) {
     let info = await transporter.sendMail({
-        from: `"${config.accountName}" <${config.accountEmail}>`, // sender address
+        from: `"${config.accountName}" <${config.accountEmail}>`,
         to: data.email, // list of receivers
         subject: subject(),
         text: text(data),
@@ -77,7 +77,6 @@ app.post('/v1/authed/deliver/:message', async (req, res) => {
     const { data } = req.body;
     if (!data) return res.status(400).send('Missing "data" property on JSON');
     const results = await send(data, template);
-    console.log(results);
     res.json(results);
 });
 
@@ -93,15 +92,12 @@ app.get('/v1/unauthed/subscribe/webhook', async (req, res) => {
     });
     const { records } = await response.json();
     let emailsSent = 0;
-    console.log(records.length);
     for (const record of records.filter(record => !record?.fields?.Notification)) {
         const email = record?.fields?.Email;
         const id = record?.id;
         try {
-            console.log('about to send');
             await send({ email }, config.messages.subscribe);
             emailsSent += 1;
-            console.log('sent');
             const output = await fetch('https://api.airtable.com/v0/appYlvRWZObGXXGOh/Emails', {
                 method: 'PATCH',
                 headers: {
