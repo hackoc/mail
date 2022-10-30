@@ -1,6 +1,3 @@
-import crypto from 'crypto';
-
-
 export const template = ({ firstName }) => `You're all set, ${firstName}! We'll reach out to you soon to verify your COVID-19 vaccination and prove your negative test.
 <br/>
 <br/>
