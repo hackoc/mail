@@ -6,7 +6,7 @@ export const template = ({ email }) => `Thanks for subscribing to Hack OC! We're
 <br/>
 Cheers,
 <br/>
-Ian & the Hack OC team
+The Hack OC team
 <br/>
 <a href="https://hackoc.org">
 <img src="https://hackoc.org/logo-full-light.png" width="300" />

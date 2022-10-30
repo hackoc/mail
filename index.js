@@ -9,6 +9,8 @@ dotenv.config();
 
 import subscribe from './templates/subscribe.js';
 import register from './templates/register.js';
+import ticket from './templates/ticket.js';
+
 import { exec } from 'child_process';
 import { runInThisContext } from 'vm';
 import { exitCode } from 'process';
