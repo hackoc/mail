@@ -13,9 +13,7 @@ import ticket from './templates/ticket.js';
 
 import { exec } from 'child_process';
 import { runInThisContext } from 'vm';
-import { exitCode } from 'process';
 import { create } from 'domain';
-import { stripVTControlCharacters } from 'util';
 
 const config = {
     accountName: 'Hack OC',
