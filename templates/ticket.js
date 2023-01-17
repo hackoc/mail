@@ -1,3 +1,5 @@
+export const required = ["firstName", "imageLink"];
+
 export const template = ({ firstName, imageLink }) => `A Hack OC ticket for ${firstName} has appeared! Your vaccination status and COVID-19 test have been verified.
 <br/>
 <br/>
@@ -40,4 +42,4 @@ We value your privacy and we'll never track whether you read or open our emails.
 export const subject = () => `Your Hack OC ticket is here!`;
 
 
-export default { template, subject, text }
+export default { template, subject, text, required }

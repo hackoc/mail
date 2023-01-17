@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 
+export const required = ["email"];
 
 export const template = ({ email }) => `Thanks for subscribing to Hack OC! We're almost ready to announce a date and open up registrations, so expect an email from us in the near future. For now, you can <a href="https://hackoc.org/discord">join our Discord server</a> and chat with other participants. Also check out our Instagram, <a href="https://instagram.com/hack.oc">@hack.oc</a>.
 <br/>
@@ -30,4 +31,4 @@ Unsubscribe: https://hackoc.org/unsubscribe/${crypto.createHash('sha256').update
 export const subject = () => `Something's stirring up in Orange County!`;
 
 
-export default { template, subject, text }
+export default { template, subject, text, required }

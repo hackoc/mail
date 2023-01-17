@@ -27,7 +27,8 @@ const config = {
     replyTo: 'team@hackoc.org',
     messages: {
         subscribe,
-        register
+        register,
+        ticket
     }
 };
 
@@ -68,6 +69,17 @@ app.use('/v1/authed', (req, res, next) => {
 
 app.get('/v1/authed', (req, res) => {
     res.send('Authed');
+});
+
+app.get('/v1/authed/templates', (req, res) => {
+	res.json(Object.keys(config.messages));
+});
+
+app.get('/v1/authed/templates/:template', (req, res) => {
+	const { template } = req.params;
+	if (!config.messages[template]) return res.json({ error: "Template not found" });
+
+	return res.json({ required: config.messages[template].required });
 });
 
 app.post('/v1/authed/deliver/:message', async (req, res) => {
