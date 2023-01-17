@@ -136,7 +136,7 @@ app.get('/v1/unauthed/subscribe/webhook', async (req, res) => {
 });
 
 app.get('/v1/webhook', (req, res) => {
-    res.redirect(`http://192.155.81.173/v1/unauthed/subscribe/webhook`);
+    res.redirect(`http://mail2.hackoc.org:8081/v1/unauthed/subscribe/webhook`);
 });
 
 app.listen(process.env.PORT ?? 8081, () => {
