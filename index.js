@@ -5,7 +5,7 @@ import crypto from 'crypto';
 import fetch from 'node-fetch';
 import cors from 'cors';
 
-dotenv.config();
+dotenv.config(process.env.ENV_PATH ? {path:process.env.ENV_PATH} : undefined);
 
 import subscribe from './templates/subscribe.js';
 import register from './templates/register.js';
