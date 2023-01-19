@@ -57,7 +57,7 @@ app.use(express.json({ extended: true }));
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the Hack OC Mailroom! Hack OC Mailroom powers all of our email services, like our mailing list, registrations, vaccine verification, and test verification. I\'m also open source! Check out https://github.com/hackoc/mail.');
+    res.send('Hi there! I\'m the Hack OC Mailroom. I power all of our email services, like our mailing list, registrations, vaccine verification, and test verification. I\'m also open source! Check out https://github.com/hackoc/mail.');
 });
 
 app.use('/v1/authed', (req, res, next) => {
