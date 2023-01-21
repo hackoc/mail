@@ -1,6 +1,6 @@
 export const required = ["firstName"];
 
-export const template = ({ firstName }) => `<span style="font-family: 'Phantom Sans 0.7', system-ui, Inter, 'Portland Text', sans-serif;">Thanks for registering, ${firstName}! We'll reach out to you soon to sign the event liability waiver. In the meantime, join our <a href="https://hackoc.org/dis
+export const template = ({ firstName }) => `Thanks for registering, ${firstName}! We'll reach out to you soon to sign the event liability waiver. In the meantime, join our <a href="https://hackoc.org/dis
 <br/>
 <br/>
 Cheers,
@@ -12,7 +12,7 @@ Ian & the Hack OC team
 </a>
 <br/>
 <br/>
-<small>We value your privacy and we'll never track whether you read or open our emails.</small></span>`;
+<small>We value your privacy and we'll never track whether you read or open our emails.</small>`;
 
 export const text = ({ firstName }) => `Thanks for registering, ${firstName}! We'll reach out to you soon to sign the event liability waiver. In the meantime, join our Discord server (https://hackoc.org/
 Cheers,
