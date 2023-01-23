@@ -7,13 +7,11 @@ import cors from 'cors';
 
 dotenv.config(process.env.ENV_PATH ? {path:process.env.ENV_PATH} : undefined);
 
-import subscribe from './templates/subscribe.js';
-import register from './templates/register.js';
-import ticket from './templates/ticket.js';
 
 import { exec } from 'child_process';
 import { runInThisContext } from 'vm';
 import { create } from 'domain';
+import { readdirSync } from 'fs';
 
 const config = {
     accountName: 'Hack OC',
@@ -25,11 +23,7 @@ const config = {
         secure: true
     },
     replyTo: 'team@hackoc.org',
-    messages: {
-        subscribe,
-        register,
-        ticket
-    }
+    messages: {}
 };
 
 const transporter = nodemailer.createTransport({
@@ -139,6 +133,12 @@ app.get('/v1/webhook', (req, res) => {
     res.redirect(`http://mail2.hackoc.org:8081/v1/unauthed/subscribe/webhook`);
 });
 
-app.listen(process.env.PORT ?? 8081, () => {
-    console.log(`Listening on *:${process.env.PORT ?? 8081}`);
-});
+(async () => {
+    const templates = readdirSync('./templates').filter(template => template.endsWith('.js'));
+    for (const template of templates) {
+        config.messages[template.substring(0, template.length - 3)] = await import('./templates/' + template);
+    }
+    app.listen(process.env.PORT ?? 8081, () => {
+        console.log(`Listening on *:${process.env.PORT ?? 8081}`);
+    });
+})();
