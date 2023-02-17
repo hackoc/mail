@@ -38,7 +38,7 @@ async function send (data, { template, subject, text }) {
     let info = await transporter.sendMail({
         from: `"${config.accountName}" <${config.accountEmail}>`,
         to: data.email, // list of receivers
-        subject: subject(),
+        subject: subject(data),
         text: text(data),
         html: template(data),
         replyTo: config.replyTo
