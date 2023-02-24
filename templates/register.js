@@ -1,6 +1,6 @@
 export const required = ["firstName"];
 
-export const template = ({ firstName }) => `Thanks for registering, ${firstName}! We'll reach out to you soon to sign the event liability waiver. In the meantime, join our <a href="https://hackoc.org/discord">Discord server</a>
+export const template = ({ firstName }) => `Thanks for registering, ${firstName}! We'll reach out to you soon to sign the event liability waiver. In the meantime, join our <a href="https://hackoc.org/discord">Discord server</a> to chat with other hackers.
 <br/>
 <br/>
 Cheers,
