@@ -3,6 +3,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "jsx-to-html": "^1.1.0",
     "node-fetch": "^3.2.10",
     "nodemailer": "^6.7.8"
   },
